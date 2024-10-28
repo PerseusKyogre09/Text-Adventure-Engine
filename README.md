@@ -55,7 +55,7 @@ python main.py
 🙏 I would like to express my gratitude to my Computer Science teacher, **Ms. Shipra**, for her valuable guidance throughout this project. I also thank my parents and friends for their support and encouragement. Additionally, I am grateful to the CBSE board for providing this opportunity.
 
 ## License
-🛠️ This project is for educational purposes only.
+🛠️ This project is for educational purposes only. Read LICENSE.md
 
 ## Disclaimer
 🚨 This project was created as part of a school assignment and is not affiliated with any commercial entities.
