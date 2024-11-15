@@ -159,18 +159,81 @@ def run_away(character):
 
 
 def battle(character, enemy_strength):
-    print(f"\nAn enemy with strength {enemy_strength} appears!")
-    if character["strength"] >= enemy_strength:
-        print("You defeated the enemy!")
-        character["exp"] += random.randint(10, 20)
-        if character["exp"] >= 50:
-            level_up(character)
-            allocate_bonus_points(character)
+    """
+    Handles a turn-based battle between the player and an enemy.
+    """
+    enemy_health = 50 + enemy_strength  # Enemy's health based on strength
+    print(f"\nAn enemy with strength {enemy_strength} has appeared!")
+    print(f"The enemy has {enemy_health} health points.")
 
-        loot = generate_loot()
-        add_to_inventory(character, loot)
-    else:
-        print("You were defeated. Game Over.")
+    while enemy_health > 0 and character["health"] > 0:
+        print("\n----- Your Turn -----")
+        print("Choose your action:")
+        print("1. Attack")
+        print("2. Use Tool")
+        print("3. Run")
+
+        choice = input("Enter your choice (1-3): ")
+        if choice == "1":
+            # Player attacks
+            weapon = character["current_weapon"]
+            if weapon:
+                damage = random.randint(*weapon.damage_range)
+                print(f"You attack with {weapon.name}, dealing {damage} damage!")
+            else:
+                damage = random.randint(5, 10)  # Default damage if no weapon
+                print(f"You punch the enemy, dealing {damage} damage!")
+
+            enemy_health -= damage
+            print(f"The enemy now has {max(0, enemy_health)} health.")
+        elif choice == "2":
+            # Use a tool (e.g., health potion)
+            if any(item == "Health Potion" for item in character["inventory"]):
+                character["inventory"].remove("Health Potion")
+                heal_amount = random.randint(15, 30)
+                character["health"] = min(character["health"] + heal_amount, 100)
+                print(f"You used a Health Potion and restored {heal_amount} health.")
+                print(f"Your health is now {character['health']}.")
+            else:
+                print("You don't have any tools to use!")
+        elif choice == "3":
+            # Attempt to run
+            if run_away(character):
+                print("You successfully escaped!")
+                return
+            else:
+                print("You failed to escape! The enemy blocks your way.")
+        else:
+            print("Invalid choice! You lose your turn.")
+
+        # Enemy's turn
+        if enemy_health > 0:
+            print("\n----- Enemy's Turn -----")
+            damage = random.randint(5, enemy_strength // 2)
+            character["health"] -= damage
+            print(f"The enemy attacks, dealing {damage} damage!")
+            print(f"Your health is now {max(0, character['health'])}.")
+
+        # Check if the player is defeated
+        if character["health"] <= 0:
+            print("\nYou were defeated by the enemy. Game Over.")
+            return
+
+        # Check if the enemy is defeated
+        if enemy_health <= 0:
+            print("\nYou defeated the enemy!")
+            character["exp"] += random.randint(10, 20)
+            if character["exp"] >= 50:
+                level_up(character)
+                allocate_bonus_points(character)
+
+            # Generate loot after defeating an enemy
+            loot = generate_loot()
+            add_to_inventory(character, loot)
+            return
+
+    print("\nThe battle has ended.")
+
 
 
 def generate_loot():
