@@ -9,11 +9,12 @@
 
 ## Features
 
-✨ **Character Creation:** Players can create a unique character with customizable attributes.  
-⚔️ **Combat System:** Battle enemies and bosses using a turn-based combat system.  
-🎒 **Inventory Management:** Collect and equip various weapons and items during your adventure.  
-⬆️ **Leveling Up:** Gain experience points (EXP) and level up your character to become stronger.  
-❓ **Random Encounters:** Explore the game world and face random enemies and bosses.
+- ✨ **Character Creation:** Players can create a unique character with customizable attributes.  
+- ⚔️ **Combat System:** Battle enemies and bosses using a turn-based combat system.  
+- 🎒 **Inventory Management:** Collect and equip various weapons and items during your adventure.  
+- ⬆️ **Leveling Up:** Gain experience points (EXP) and level up your character to become stronger.  
+- ❓ **Random Encounters:** Explore the game world and face random enemies and bosses.
+- 💥 **Critical Hits & Durability**: Weapons have durability and a chance for critical hits, enhancing the combat experience with random elements.
 
 ## Game Mechanics
 
@@ -26,7 +27,10 @@
 
 ### Combat
 
-⚔️ Players will encounter enemies and bosses throughout their adventure. They can choose to fight or run, and their decisions will impact the outcome of battles. Successful battles reward the player with EXP, items, and the opportunity to level up.
+⚔️ The game features a turn-based combat system where you can fight enemies and bosses. Choose to attack or flee, and use items in your inventory to gain an advantage. Winning battles rewards you with EXP, items, and a chance to level up your character.
+
+- Critical Hits: Weapons have a chance of landing critical hits, doubling the damage dealt.
+- Durability: Weapons have limited durability, and will break after repeated use in battle.
 
 ### Inventory
 
@@ -45,11 +49,12 @@
 
 To play the game, clone this repository and run the `main.py` file using Python.
 
-`bash
+```bash
 git clone https://github.com/PerseusKyogre09/text-adventure-engine.git
 cd text-adventure-engine
 python main.py
-`
+```
+**Note**: `school_project.py` has been preserved as the original code which was submitted as project.
 
 ## Acknowledgements
 🙏 I would like to express my gratitude to my Computer Science teacher, **Ms. Shipra**, for her valuable guidance throughout this project. I also thank my parents and friends for their support and encouragement. Additionally, I am grateful to the CBSE board for providing this opportunity.
